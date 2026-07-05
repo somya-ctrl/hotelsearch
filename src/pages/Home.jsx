@@ -58,9 +58,12 @@ function Home() {
         )}
 
         {!loading && !error && hotels.length === 0 && (
-          <p className="rounded-lg bg-gray-50 px-4 py-6 text-center text-gray-500">
-            No hotels found{location ? ` in "${location}"` : ""}. Try a different destination.
-          </p>
+          <div className="rounded-lg bg-gray-50 px-4 py-6 text-center text-gray-500">
+            <p>No hotels found{location ? ` in "${location}"` : ""}.</p>
+            <p className="mt-1 text-sm">
+              Try Mumbai, Delhi, Goa, Jaipur, Bengaluru, Chennai, Hyderabad, Kolkata, Pune, Ahmedabad, Gurgaon, or Noida.
+            </p>
+          </div>
         )}
 
         {!loading && !error && hotels.length > 0 && (

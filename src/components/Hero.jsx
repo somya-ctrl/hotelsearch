@@ -1,6 +1,21 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+const SUPPORTED_CITIES = [
+  "Ahmedabad",
+  "Bengaluru",
+  "Chennai",
+  "Delhi",
+  "Goa",
+  "Gurgaon",
+  "Hyderabad",
+  "Jaipur",
+  "Kolkata",
+  "Mumbai",
+  "Noida",
+  "Pune",
+];
+
 function Hero() {
   const [destination, setDestination] = useState("");
   const navigate = useNavigate();
@@ -56,11 +71,17 @@ function Hero() {
           </label>
           <input
             type="text"
+            list="city-list"
             value={destination}
             onChange={(e) => setDestination(e.target.value)}
             placeholder="Mumbai, Goa..."
             className="w-full bg-transparent text-sm font-semibold text-gray-900 outline-none placeholder:text-gray-400 placeholder:font-medium"
           />
+          <datalist id="city-list">
+            {SUPPORTED_CITIES.map((city) => (
+              <option key={city} value={city} />
+            ))}
+          </datalist>
         </div>
 
         {/* Perforation */}
