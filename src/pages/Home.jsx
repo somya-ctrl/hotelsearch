@@ -1,12 +1,10 @@
 import Layout from "../components/layouts/Layout";
+import Hero from "../components/Hero";
 
 function Home(){
     return (
         <Layout>
-            <h1 className="text-3xl font-bold text-center mt-10">
-                HomePage
-
-            </h1>
+            <Hero />
         </Layout>
     )
 
