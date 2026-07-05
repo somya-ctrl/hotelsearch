@@ -1,16 +1,66 @@
-# React + Vite
+# HotelHub
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A hotel search and discovery app built with React, Vite, and Tailwind CSS. Search hotels by destination, browse results, and view full hotel details — all backed by a live hotels API.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **Destination search** — search hotels by city from the hero section, backed by autocomplete suggestions for supported cities.
+- **Hotel listing** — a responsive grid of hotel cards with thumbnail, rating, location, and price per night, with loading and empty/error states.
+- **Hotel details** — a dedicated page per hotel with a photo gallery, rating, price, location, and full description.
+- **404 page** — a friendly not-found page for unmatched routes.
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- [React 19](https://react.dev/)
+- [Vite](https://vite.dev/)
+- [React Router](https://reactrouter.com/) for client-side routing
+- [Tailwind CSS](https://tailwindcss.com/) for styling
+- [Axios](https://axios-http.com/) for API requests
+- [React Icons](https://react-icons.github.io/react-icons/)
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```bash
+npm install
+npm run dev
+```
+
+The app runs on `http://localhost:5173` by default.
+
+Other scripts:
+
+```bash
+npm run build     # production build
+npm run preview   # preview the production build locally
+npm run lint      # run ESLint
+```
+
+## API
+
+The app consumes the public [Hotels Demo API](https://demohotelsapi.pythonanywhere.com/hotels/):
+
+| Endpoint | Description |
+|---|---|
+| `GET /hotels/` | List hotels, supports `location`, `search`, `min_price`, `max_price`, `min_rating`, `max_rating`, `limit`, `skip`, `order_by` query params |
+| `GET /hotels/{id}/` | Fetch a single hotel by id |
+
+API access is wrapped in [`src/services/HotelApi.js`](src/services/HotelApi.js).
+
+## Project Structure
+
+```
+src/
+├── assets/                 # static assets
+├── components/
+│   ├── layouts/            # Navbar, Footer, Layout
+│   ├── Hero.jsx             # hero section with destination search
+│   └── HotelCard.jsx        # hotel listing card
+├── pages/
+│   ├── Home.jsx             # hero + hotel listing
+│   ├── HotelDetails.jsx      # single hotel page
+│   └── NotFound.jsx          # 404 page
+├── routes/
+│   └── AppRoutes.jsx         # route definitions
+└── services/
+    └── HotelApi.js           # API client
+```
